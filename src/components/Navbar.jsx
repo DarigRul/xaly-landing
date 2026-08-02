@@ -14,7 +14,11 @@ const Navbar = () => {
             <a href="#soluciones" className="text-gray-300 hover:text-cyber-cyan transition-colors text-sm font-medium">Soluciones</a>
             <a href="#tecnologia" className="text-gray-300 hover:text-cyber-cyan transition-colors text-sm font-medium">Tecnología</a>
             <a href="#planes" className="text-gray-300 hover:text-cyber-cyan transition-colors text-sm font-medium">Planes</a>
-            <button className="bg-cyber-cyan text-black px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
+            <a href="#blog" className="text-gray-300 hover:text-cyber-cyan transition-colors text-sm font-medium">Blog</a>
+            <button 
+              onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
+              className="bg-cyber-cyan text-black px-6 py-2.5 rounded-full font-semibold text-sm hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all"
+            >
               Auditoría Gratuita
             </button>
           </div>

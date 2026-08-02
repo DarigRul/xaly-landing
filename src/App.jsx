@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import PainSection from './components/PainSection';
 import Pricing from './components/Pricing';
 import Technology from './components/Technology';
+import BlogSection from './components/BlogSection';
 import ContactForm from './components/ContactForm';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
@@ -17,6 +18,7 @@ function App() {
         <PainSection />
         <Pricing />
         <Technology />
+        <BlogSection />
         <ContactForm />
       </main>
       <Footer />
