@@ -23,7 +23,7 @@ const Hero = () => {
           Construimos el sistema nervioso de tu negocio. Automatizamos WhatsApp, sincronizamos tu ERP y eliminamos errores de captura para que reduzcas tus costos de nómina y escales sin límites.
         </p>
         
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
           <button className="group flex items-center justify-center gap-2 bg-cyber-cyan text-black px-8 py-4 rounded-full font-bold text-lg hover:shadow-[0_0_25px_rgba(0,240,255,0.5)] transition-all">
             Ver Soluciones
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -32,6 +32,19 @@ const Hero = () => {
             <Bot className="w-5 h-5 text-cyber-red" />
             Agendar Diagnóstico
           </button>
+        </div>
+
+        {/* Hero Image */}
+        <div className="relative max-w-5xl mx-auto mt-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div className="absolute -inset-1 bg-gradient-to-r from-cyber-cyan to-cyber-red opacity-30 blur-2xl rounded-3xl"></div>
+          <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
+            <img 
+              src="/images/hero.jpg" 
+              alt="B2B AI Automation Control Room" 
+              className="w-full h-auto object-cover transform hover:scale-105 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+          </div>
         </div>
       </div>
     </section>

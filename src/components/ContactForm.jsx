@@ -83,11 +83,22 @@ const ContactForm = () => {
               </div>
               <p className="text-gray-300 font-medium">Propuesta de automatización</p>
             </div>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mb-10">
               <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center border border-white/10">
                 <span className="text-cyber-cyan font-bold">3</span>
               </div>
               <p className="text-gray-300 font-medium">Despliegue y entrenamiento</p>
+            </div>
+
+            {/* Context Image */}
+            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-lg group max-w-md hidden md:block">
+               <div className="absolute inset-0 bg-cyber-cyan/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-overlay"></div>
+               <img 
+                 src="/images/contact.jpg" 
+                 alt="Automated Chat Interface on Smartphone" 
+                 className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+               />
+               <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-0"></div>
             </div>
           </div>
 
