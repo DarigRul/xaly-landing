@@ -6,7 +6,7 @@ const Pricing = () => {
     <section id="planes" className="py-24 bg-slate-900/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Elige el nivel de evolución para tu empresa</h2>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wide">Elige el nivel de evolución para tu empresa</h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">Automatización accesible y escalable para cualquier volumen de operación.</p>
         </div>
 
@@ -15,15 +15,11 @@ const Pricing = () => {
           <div className="glass-panel rounded-3xl p-8 border border-cyber-cyan/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.15)] transition-all duration-300 hover:-translate-y-2 flex flex-col relative overflow-hidden">
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyber-cyan/10 blur-3xl rounded-full"></div>
             
-            <h3 className="text-2xl font-bold text-white mb-2">Ventas & Control 24/7</h3>
-            <p className="text-cyber-cyan text-sm font-semibold mb-6">Enfoque PyME (Distribuidoras, Clínicas, Comercio Local)</p>
+            <h3 className="font-display text-2xl font-bold text-white mb-2 uppercase tracking-wide">Ventas & Control 24/7</h3>
+            <p className="text-cyber-cyan text-sm font-semibold mb-6 tracking-wider uppercase">Enfoque PyME · Distribuidoras, Clínicas, Comercio Local</p>
             
             <div className="mb-6 border-b border-white/10 pb-6">
-              <div className="flex items-end gap-2">
-                <span className="text-4xl font-extrabold text-white">$3,500</span>
-                <span className="text-gray-400 mb-1">MXN / mes</span>
-              </div>
-              <p className="text-gray-500 text-sm mt-2">+ $12,500 MXN (Setup único)</p>
+              <p className="text-gray-400 text-sm">Paquete diseñado para empresas que buscan optimizar su operación diaria y atender a sus clientes de forma automática las 24 horas del día.</p>
             </div>
 
             <ul className="space-y-4 mb-8 flex-1">
@@ -45,8 +41,11 @@ const Pricing = () => {
               </li>
             </ul>
 
-            <button className="w-full bg-transparent border-2 border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:text-black py-4 rounded-xl font-bold text-lg transition-all">
-              Implementar Paquete
+            <button 
+              onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
+              className="w-full bg-transparent border-2 border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:text-black py-4 rounded-xl font-bold text-lg tracking-widest uppercase transition-all"
+            >
+              Solicitar Información
             </button>
           </div>
 
@@ -57,14 +56,11 @@ const Pricing = () => {
               Premium
             </div>
             
-            <h3 className="text-2xl font-bold text-white mb-2">Desarrollo Corporativo a la Medida</h3>
-            <p className="text-cyber-red text-sm font-semibold mb-6">Enfoque High-Ticket (Logística, Fábricas, Corporativos)</p>
+            <h3 className="font-display text-2xl font-bold text-white mb-2 uppercase tracking-wide">Desarrollo Corporativo a la Medida</h3>
+            <p className="text-cyber-red text-sm font-semibold mb-6 tracking-wider uppercase">Enfoque High-Ticket · Logística, Fábricas, Corporativos</p>
             
             <div className="mb-6 border-b border-white/10 pb-6">
-              <div className="flex items-end gap-2">
-                <span className="text-4xl font-extrabold text-white">Cotización</span>
-              </div>
-              <p className="text-gray-500 text-sm mt-2">Personalizada según el volumen y complejidad</p>
+              <p className="text-gray-400 text-sm">Soluciones enterprise de automatización compleja, diseñadas a la medida del volumen y los sistemas existentes de tu organización.</p>
             </div>
 
             <ul className="space-y-4 mb-8 flex-1">
@@ -86,7 +82,10 @@ const Pricing = () => {
               </li>
             </ul>
 
-            <button className="w-full bg-cyber-red text-white hover:bg-red-600 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_4px_14px_0_rgba(255,87,87,0.39)] hover:shadow-[0_6px_20px_rgba(255,87,87,0.23)]">
+            <button 
+              onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
+              className="w-full bg-cyber-red text-white hover:bg-red-600 py-4 rounded-xl font-bold text-lg tracking-widest uppercase transition-all shadow-[0_4px_14px_0_rgba(255,87,87,0.39)] hover:shadow-[0_6px_20px_rgba(255,87,87,0.23)]"
+            >
               Hablar con un Arquitecto
             </button>
           </div>

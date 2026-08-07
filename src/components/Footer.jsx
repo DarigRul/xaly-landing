@@ -6,19 +6,20 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center mb-12">
           <div className="mb-8 md:mb-0 text-center md:text-left">
-            <span className="text-2xl font-bold tracking-tighter text-white block mb-2">
-              XALY<span className="text-cyber-red">.</span>
-            </span>
+            <img src="/images/logo.png" alt="XALY Logo" className="h-16 w-auto object-contain mb-3 mx-auto md:mx-0" />
             <p className="text-gray-400 text-sm max-w-sm">
               Automatización Empresarial e Inteligencia Artificial para negocios que buscan escalar sin límites.
             </p>
           </div>
           
           <div className="flex flex-col items-center md:items-end gap-4">
-            <a href="mailto:hola@xaly.ai" className="text-gray-300 hover:text-cyber-cyan transition-colors text-lg font-medium">
-              hola@xaly.ai
+            <a href="mailto:contacto@xaly.mx" className="text-gray-300 hover:text-cyber-cyan transition-colors text-lg font-medium">
+              contacto@xaly.mx
             </a>
-            <button className="text-sm font-semibold text-cyber-cyan hover:text-white transition-colors underline underline-offset-4 decoration-cyber-cyan/30">
+            <button 
+              onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
+              className="text-sm font-semibold text-cyber-cyan hover:text-white transition-colors underline underline-offset-4 decoration-cyber-cyan/30"
+            >
               Solicitar una demostración
             </button>
           </div>

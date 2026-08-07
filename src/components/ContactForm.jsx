@@ -35,7 +35,8 @@ const ContactForm = () => {
     };
 
     try {
-      await fetch('https://darigrul.app.n8n.cloud/webhook/eb9da08e-eba1-4a70-8661-669a06670992', {
+      // Enviar al mailer.php en el servidor de Hostinger
+      const response = await fetch('https://xaly.mx/mailer.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,17 +44,29 @@ const ContactForm = () => {
         },
         body: JSON.stringify(jsonPayload),
       });
-      
+
+      // También enviar al webhook de n8n (si está activo)
+      fetch('https://darigrul.app.n8n.cloud/webhook/eb9da08e-eba1-4a70-8661-669a06670992', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jsonPayload),
+      }).catch(() => {}); // silencioso si falla
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.message || 'Error del servidor');
+      }
+
       setStatus('success');
       setTimeout(() => {
         setStatus('idle');
         setFormData({ nombre: '', empresa: '', email: '', telefono: '', mensaje: '' });
       }, 5000);
-      
+
     } catch (error) {
-      console.error('Error enviando datos al webhook:', error);
+      console.error('Error al enviar:', error);
       setStatus('idle');
-      alert('Hubo un error al enviar el formulario. Verifica tu conexión o la configuración CORS en n8n.');
+      alert(`Error al enviar el formulario: ${error.message}`);
     }
   };
 
