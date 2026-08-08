@@ -12,7 +12,7 @@ const Hero = () => {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyber-cyan opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-cyber-cyan"></span>
           </span>
-          Automatización B2B para Logística, Comercio y Clínicas
+          Automatización para empresas de cualquier tamaño y sector
         </div>
         
         <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight max-w-5xl mx-auto uppercase">
