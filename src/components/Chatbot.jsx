@@ -1,19 +1,22 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, X, Send } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Chatbot = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { id: 1, type: 'bot', text: '¡Hola! Soy la IA de XALY. ¿Quieres saber cómo automatizar tu empresa hoy?' }
+    { id: 1, type: 'bot', text: '¡Hola! Soy la IA de XALY. ¿En qué te puedo ayudar para escalar o automatizar tu empresa hoy?' }
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
 
   const suggestedQuestions = [
-    "¿Qué procesos pueden automatizar?",
+    "¿Qué tipo de empresas atienden?",
     "Quiero ver los precios",
-    "Agendar una consultoría"
+    "¿Cómo funciona la automatización?",
+    "Quiero hablar con un asesor"
   ];
 
   const scrollToBottom = () => {
@@ -33,21 +36,42 @@ const Chatbot = () => {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot response based on keywords
+    // Simulate intelligent bot response based on context
     setTimeout(() => {
-      let botResponse = "Interesante. Un arquitecto de software se pondrá en contacto para darte detalles. ¿En qué más puedo ayudarte?";
+      let botResponse = "";
+      let shouldRedirect = false;
       
       const lowerText = text.toLowerCase();
-      if (lowerText.includes("precios") || lowerText.includes("cuesta")) {
-        botResponse = "Nuestros planes empiezan desde $3,500 MXN mensuales para pymes, o bien soluciones corporativas a medida. Puedes verlos en la sección de Planes.";
-      } else if (lowerText.includes("procesos") || lowerText.includes("automatizar")) {
-        botResponse = "Automatizamos atención al cliente 24/7 vía WhatsApp, captura de datos en CRM, integración de ERPs (SAP/Oracle) y generación de reportes automáticos.";
-      } else if (lowerText.includes("consultoría") || lowerText.includes("agendar")) {
-        botResponse = "¡Excelente! Por favor llena el formulario de contacto de la página o déjame tu correo por aquí y te buscaremos hoy mismo.";
+      
+      // Intent Mapping / Knowledge Base
+      if (lowerText.match(/(precio|costo|cotiza|cuesta|planes|paquetes)/)) {
+        botResponse = "Nuestros planes empiezan desde $3,500 MXN mensuales para herramientas pyme (como bots de ventas 24/7), hasta soluciones corporativas tipo ERP a la medida. Si buscas algo avanzado, te sugiero una consultoría. ¿Te redirijo al formulario?";
+      } else if (lowerText.match(/(hola|buen dia|buenas tardes|que tal|saludos)/)) {
+        botResponse = "¡Hola! Es un gusto. En XALY nos dedicamos a erradicar tareas manuales y crear sistemas inteligentes para empresas. ¿Qué problema operativo te gustaría resolver?";
+      } else if (lowerText.match(/(tipo de empresa|quienes son|que hacen|servicios|a que se dedican|como funciona)/)) {
+        botResponse = "Ayudamos a empresas (clínicas, fábricas, logística) a recuperar el control de su operación. Creamos chatbots de atención, integramos ERPs, y automatizamos finanzas y recursos humanos para que el dueño deje de ser un esclavo de su negocio.";
+      } else if (lowerText.match(/(asesor|contacto|hablar con alguien|humano|agendar|cita|reunion|consultoria|contratar|comprar)/)) {
+        botResponse = "¡Excelente decisión! Te redirigiré ahora mismo a nuestro formulario de contacto para que un Arquitecto de Software se comunique contigo de inmediato.";
+        shouldRedirect = true;
+      } else if (lowerText.match(/(gracias|ok|perfecto|muy bien|excelente)/)) {
+        botResponse = "¡De nada! Recuerda que la verdadera libertad empresarial se logra automatizando. Si necesitas algo más, aquí estoy.";
+      } else if (lowerText.match(/(si|claro|por favor|redirigeme|ok|va|simon)/) && messages.length > 2 && messages[messages.length - 1].text.includes("redirijo")) {
+        botResponse = "Entendido, te llevo al formulario de contacto en un momento...";
+        shouldRedirect = true;
+      } else {
+        botResponse = "Interesante. Cada empresa es un mundo diferente. Para darte la mejor solución sobre Inteligencia Artificial o automatización para tu caso, lo ideal es que hablemos a detalle. ¿Te gustaría que te mande a nuestra sección de contacto?";
       }
 
       setMessages(prev => [...prev, { id: Date.now() + 1, type: 'bot', text: botResponse }]);
       setIsTyping(false);
+      
+      if (shouldRedirect) {
+        setTimeout(() => {
+          setIsOpen(false);
+          navigate('/contacto');
+          window.scrollTo(0,0);
+        }, 2000);
+      }
     }, 1500);
   };
 
