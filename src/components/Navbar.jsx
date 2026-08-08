@@ -23,7 +23,7 @@ const Navbar = () => {
               onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
               className="bg-cyber-cyan text-black px-6 py-2.5 rounded-full font-bold text-sm tracking-widest uppercase hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all"
             >
-              Auditoría Gratuita
+              Consultoría Gratuita
             </button>
           </div>
 

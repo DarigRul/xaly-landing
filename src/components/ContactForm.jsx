@@ -81,7 +81,7 @@ const ContactForm = () => {
           <div className="w-full lg:w-1/2">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Inicia tu <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-blue-500">Transformación</span> Hoy</h2>
             <p className="text-gray-400 text-lg mb-8 leading-relaxed">
-              Déjanos tus datos y un Arquitecto de Software se pondrá en contacto contigo para realizar una auditoría gratuita de tus procesos actuales.
+              Déjanos tus datos y un Arquitecto de Software se pondrá en contacto contigo para realizar una consultoría gratuita de tus procesos actuales.
             </p>
             
             <div className="flex items-center gap-4 mb-4">
@@ -207,7 +207,7 @@ const ContactForm = () => {
                     disabled={status === 'submitting'}
                     className="mt-2 group flex items-center justify-center gap-2 w-full bg-cyber-cyan text-black py-4 rounded-xl font-bold text-lg hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    {status === 'submitting' ? 'Enviando...' : 'Solicitar Auditoría'}
+                    {status === 'submitting' ? 'Enviando...' : 'Solicitar Consultoría'}
                     {status !== 'submitting' && <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}
                   </button>
                 </form>

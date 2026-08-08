@@ -13,7 +13,7 @@ const Chatbot = () => {
   const suggestedQuestions = [
     "¿Qué procesos pueden automatizar?",
     "Quiero ver los precios",
-    "Agendar una auditoría"
+    "Agendar una consultoría"
   ];
 
   const scrollToBottom = () => {
@@ -42,7 +42,7 @@ const Chatbot = () => {
         botResponse = "Nuestros planes empiezan desde $3,500 MXN mensuales para pymes, o bien soluciones corporativas a medida. Puedes verlos en la sección de Planes.";
       } else if (lowerText.includes("procesos") || lowerText.includes("automatizar")) {
         botResponse = "Automatizamos atención al cliente 24/7 vía WhatsApp, captura de datos en CRM, integración de ERPs (SAP/Oracle) y generación de reportes automáticos.";
-      } else if (lowerText.includes("auditoría") || lowerText.includes("agendar")) {
+      } else if (lowerText.includes("consultoría") || lowerText.includes("agendar")) {
         botResponse = "¡Excelente! Por favor llena el formulario de contacto de la página o déjame tu correo por aquí y te buscaremos hoy mismo.";
       }
 

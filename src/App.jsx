@@ -8,10 +8,12 @@ import BlogSection from './components/BlogSection';
 import ContactForm from './components/ContactForm';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
+import ParticlesBackground from './components/ParticlesBackground';
 
 function App() {
   return (
     <div className="min-h-screen bg-background text-white font-sans overflow-x-hidden relative">
+      <ParticlesBackground />
       <Navbar />
       <main>
         <Hero />
