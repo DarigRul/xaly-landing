@@ -1,31 +1,40 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import PainSection from './components/PainSection';
-import Pricing from './components/Pricing';
-import Technology from './components/Technology';
-import BlogSection from './components/BlogSection';
-import ContactForm from './components/ContactForm';
 import Chatbot from './components/Chatbot';
 import Footer from './components/Footer';
 import ParticlesBackground from './components/ParticlesBackground';
+import PrivacyPolicy from './components/PrivacyPolicy';
+
+// Pages
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Tech from './pages/Tech';
+import BlogPage from './pages/BlogPage';
+import Contact from './pages/Contact';
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-white font-sans overflow-x-hidden relative">
-      <ParticlesBackground />
-      <Navbar />
-      <main>
-        <Hero />
-        <PainSection />
-        <Pricing />
-        <Technology />
-        <BlogSection />
-        <ContactForm />
-      </main>
-      <Footer />
-      <Chatbot />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-background text-white font-sans overflow-x-hidden relative">
+        <ParticlesBackground />
+        <Navbar />
+        
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/filosofia" element={<About />} />
+          <Route path="/soluciones" element={<Services />} />
+          <Route path="/tecnologia" element={<Tech />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/contacto" element={<Contact />} />
+          <Route path="/privacidad" element={<PrivacyPolicy onBack={() => window.history.back()} />} />
+        </Routes>
+        
+        <Footer />
+        <Chatbot />
+      </div>
+    </Router>
   );
 }
 

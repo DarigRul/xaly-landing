@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -16,19 +17,19 @@ const Footer = () => {
             <a href="mailto:contacto@xaly.mx" className="text-gray-300 hover:text-cyber-cyan transition-colors text-lg font-medium">
               contacto@xaly.mx
             </a>
-            <button 
-              onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
+            <Link 
+              to="/contacto"
               className="text-sm font-semibold text-cyber-cyan hover:text-white transition-colors underline underline-offset-4 decoration-cyber-cyan/30"
             >
               Solicitar una demostración
-            </button>
+            </Link>
           </div>
         </div>
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
           <p>&copy; 2026 XALY. Todos los derechos reservados.</p>
           <div className="flex space-x-6">
-            <a href="#" className="hover:text-gray-300 transition-colors">Privacidad</a>
+            <Link to="/privacidad" className="hover:text-gray-300 transition-colors">Privacidad</Link>
             <a href="#" className="hover:text-gray-300 transition-colors">Términos</a>
           </div>
         </div>
