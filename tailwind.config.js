@@ -16,6 +16,15 @@ export default {
       fontFamily: {
         sans: ['Inter', 'Roboto', 'sans-serif'],
       },
+      keyframes: {
+        glance: {
+          '0%, 100%': { transform: 'translateX(-100%)' },
+          '50%': { transform: 'translateX(100%)' },
+        }
+      },
+      animation: {
+        glance: 'glance 2s ease-in-out infinite',
+      }
     },
   },
   plugins: [],

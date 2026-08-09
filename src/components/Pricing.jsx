@@ -1,18 +1,40 @@
 import React from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Pricing = () => {
   return (
-    <section id="planes" className="py-24 bg-slate-900/20">
+    <section id="planes" className="py-24 bg-slate-900/20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-4 uppercase tracking-wide">Elige el nivel de evolución para tu empresa</h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">Automatización accesible y escalable para cualquier volumen de operación.</p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto"
+        >
           {/* Card 1 */}
-          <div className="glass-panel rounded-3xl p-8 border border-cyber-cyan/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.15)] transition-all duration-300 hover:-translate-y-2 flex flex-col relative overflow-hidden">
+          <motion.div 
+            variants={{
+              hidden: { opacity: 0, x: -50 },
+              visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100 } }
+            }}
+            className="glass-panel rounded-3xl p-8 border border-cyber-cyan/30 hover:shadow-[0_0_40px_rgba(0,240,255,0.15)] transition-all duration-300 hover:-translate-y-2 flex flex-col relative overflow-hidden"
+          >
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyber-cyan/10 blur-3xl rounded-full"></div>
             
             <h3 className="font-display text-2xl font-bold text-white mb-2 uppercase tracking-wide">Ventas & Control 24/7</h3>
@@ -43,14 +65,21 @@ const Pricing = () => {
 
             <button 
               onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
-              className="w-full bg-transparent border-2 border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:text-black py-4 rounded-xl font-bold text-lg tracking-widest uppercase transition-all"
+              className="w-full bg-transparent border-2 border-cyber-cyan text-cyber-cyan hover:bg-cyber-cyan hover:text-black py-4 rounded-xl font-bold text-lg tracking-widest uppercase transition-all relative overflow-hidden group"
             >
-              Solicitar Información
+              <span className="relative z-10">Solicitar Información</span>
+              <div className="absolute inset-0 h-full w-0 bg-cyber-cyan transition-all duration-300 ease-out group-hover:w-full z-0"></div>
             </button>
-          </div>
+          </motion.div>
 
           {/* Card 2 - Premium */}
-          <div className="glass-panel rounded-3xl p-8 border-2 border-cyber-red/50 hover:shadow-[0_0_40px_rgba(255,87,87,0.2)] transition-all duration-300 hover:-translate-y-2 flex flex-col relative overflow-hidden bg-gradient-to-b from-slate-900/80 to-background">
+          <motion.div 
+            variants={{
+              hidden: { opacity: 0, x: 50 },
+              visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100 } }
+            }}
+            className="glass-panel rounded-3xl p-8 border-2 border-cyber-red/50 hover:shadow-[0_0_40px_rgba(255,87,87,0.2)] transition-all duration-300 hover:-translate-y-2 flex flex-col relative overflow-hidden bg-gradient-to-b from-slate-900/80 to-background"
+          >
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyber-red/10 blur-3xl rounded-full"></div>
             <div className="absolute top-4 right-4 bg-cyber-red text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
               Premium
@@ -84,12 +113,13 @@ const Pricing = () => {
 
             <button 
               onClick={() => document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' })}
-              className="w-full bg-cyber-red text-white hover:bg-red-600 py-4 rounded-xl font-bold text-lg tracking-widest uppercase transition-all shadow-[0_4px_14px_0_rgba(255,87,87,0.39)] hover:shadow-[0_6px_20px_rgba(255,87,87,0.23)]"
+              className="w-full bg-cyber-red text-white hover:bg-red-600 py-4 rounded-xl font-bold text-lg tracking-widest uppercase transition-all shadow-[0_4px_14px_0_rgba(255,87,87,0.39)] hover:shadow-[0_6px_20px_rgba(255,87,87,0.23)] relative overflow-hidden group"
             >
-              Hablar con un Arquitecto
+              <span className="relative z-10">Hablar con un Arquitecto</span>
+              <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-glance z-0"></div>
             </button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

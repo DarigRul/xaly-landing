@@ -45,6 +45,73 @@ const BlogSection = () => {
           </p>
         </>
       )
+    },
+    {
+      id: 2,
+      title: "La Revolución del Transporte: Cómo la IA está transformando la Logística",
+      excerpt: "La inteligencia artificial ya no es ciencia ficción. Descubre cómo los algoritmos de enrutamiento y la automatización predictiva están reduciendo costos operativos hasta en un 40%.",
+      date: "05 Agosto 2026",
+      readTime: "5 min",
+      image: "/images/blog_logistics.jpg",
+      content: (
+        <>
+          <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+            La industria del transporte y la logística siempre ha dependido del equilibrio perfecto entre tiempo, distancia y recursos. Hoy, la Inteligencia Artificial está reescribiendo las reglas del juego, permitiendo que las flotas operen con una eficiencia matemática inalcanzable para el cerebro humano.
+          </p>
+          
+          <h3 className="text-2xl font-bold text-white mb-4 mt-8">Optimización Predictiva de Rutas</h3>
+          <p className="text-gray-300 mb-6 leading-relaxed">
+            Sistemas avanzados pueden analizar en tiempo real datos de tráfico, clima y mantenimientos vehiculares para recalcular dinámicamente las rutas. Esto se traduce en menor consumo de combustible y entregas que siempre llegan a tiempo, aumentando drásticamente la satisfacción del cliente.
+          </p>
+
+          <h3 className="text-2xl font-bold text-white mb-4 mt-8">Automatización de Inventarios B2B</h3>
+          <p className="text-gray-300 mb-6 leading-relaxed">
+            Al integrar ERPs con modelos de IA predictiva, las empresas pueden anticipar la demanda de stock antes de que ocurra. Ya no hay quiebres de inventario ni sobrealmacenaje; la IA compra, acomoda y despacha con una sincronización perfecta.
+          </p>
+
+          <div className="my-10 p-6 border-l-4 border-cyber-cyan bg-slate-800/50 rounded-r-xl">
+            <p className="text-xl text-cyber-cyan italic font-medium">
+              "El almacén del futuro no solo almacena productos, sino que predice el flujo exacto de la cadena de suministro gracias a la automatización inteligente."
+            </p>
+          </div>
+
+          <h3 className="text-2xl font-bold text-white mb-4 mt-8">Impacto en la Última Milla</h3>
+          <p className="text-gray-300 mb-6 leading-relaxed">
+            La última milla suele representar más del 50% del costo total de envío. Herramientas de machine learning están siendo utilizadas para coordinar flotillas en hiper-localización, asegurando un margen de ganancia sin precedentes para las pymes logísticas.
+          </p>
+        </>
+      )
+    },
+    {
+      id: 3,
+      title: "Recursos Humanos Autónomos: El fin de la micro-gestión corporativa",
+      excerpt: "Dejar de perder horas en nóminas y altas del IMSS es posible. La automatización libera al departamento de Recursos Humanos para enfocarse en el talento y la retención.",
+      date: "08 Agosto 2026",
+      readTime: "3 min",
+      image: "/images/blog_hr.jpg",
+      content: (
+        <>
+          <p className="text-gray-300 text-lg mb-6 leading-relaxed">
+            Históricamente, los departamentos de Recursos Humanos han estado sepultados bajo toneladas de papeleo, correos y cálculos de nómina. La llegada de la automatización robótica de procesos (RPA) y la Inteligencia Artificial está liberando por completo a estos equipos.
+          </p>
+          
+          <h3 className="text-2xl font-bold text-white mb-4 mt-8">Onboarding y Altas Automáticas</h3>
+          <p className="text-gray-300 mb-6 leading-relaxed">
+            Con un sistema automatizado, cuando un candidato firma su contrato, el sistema genera automáticamente su correo corporativo, sus accesos, su alta en el IMSS y su registro en el software de nómina. Un proceso que antes tomaba días, ahora se realiza en segundos y con cero margen de error.
+          </p>
+
+          <h3 className="text-2xl font-bold text-white mb-4 mt-8">Atención al Empleado 24/7</h3>
+          <p className="text-gray-300 mb-6 leading-relaxed">
+            Mediante chatbots internos impulsados por IA, los empleados pueden consultar sus días de vacaciones, recibos de nómina o políticas de la empresa en cualquier momento, sin interrumpir al personal de RRHH.
+          </p>
+
+          <div className="my-10 p-6 border-l-4 border-cyber-cyan bg-slate-800/50 rounded-r-xl">
+            <p className="text-xl text-cyber-cyan italic font-medium">
+              "Automatizar Recursos Humanos no significa deshumanizar la empresa; significa quitar a los humanos de tareas robóticas para que vuelvan a conectar con las personas."
+            </p>
+          </div>
+        </>
+      )
     }
   ];
 

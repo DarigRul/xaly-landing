@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <nav className="fixed w-full top-0 z-50 glass-panel border-b-0 border-slate-800">
+    <motion.nav 
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, type: 'spring', stiffness: 100 }}
+      className="fixed w-full top-0 z-50 glass-panel border-b-0 border-slate-800"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           {/* Logo Image */}
@@ -13,6 +19,7 @@ const Navbar = () => {
             <img 
               src="/images/logo.png" 
               alt="XALY Logo" 
+              className="invert mix-blend-screen"
               style={{ height: '64px', width: 'auto' }}
             />
           </Link>
@@ -58,7 +65,7 @@ const Navbar = () => {
           </Link>
         </div>
       )}
-    </nav>
+    </motion.nav>
   );
 };
 

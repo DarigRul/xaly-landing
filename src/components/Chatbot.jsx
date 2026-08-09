@@ -8,15 +8,14 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     { id: 1, type: 'bot', text: '¡Hola! Soy la IA de XALY. ¿En qué te puedo ayudar para escalar o automatizar tu empresa hoy?' }
   ]);
-  const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [showQuestions, setShowQuestions] = useState(true);
   const messagesEndRef = useRef(null);
 
   const suggestedQuestions = [
-    "¿Qué tipo de empresas atienden?",
-    "Quiero ver los precios",
-    "¿Cómo funciona la automatización?",
-    "Quiero hablar con un asesor"
+    "¿Qué procesos pueden automatizar?",
+    "¿En cuánto tiempo veo resultados?",
+    "¿Tienen soluciones para mi sector?"
   ];
 
   const scrollToBottom = () => {
@@ -33,7 +32,7 @@ const Chatbot = () => {
     // Add user message
     const userMsg = { id: Date.now(), type: 'user', text };
     setMessages(prev => [...prev, userMsg]);
-    setInputValue('');
+    setShowQuestions(false);
     setIsTyping(true);
 
     // Simulate intelligent bot response based on context
@@ -43,23 +42,22 @@ const Chatbot = () => {
       
       const lowerText = text.toLowerCase();
       
-      // Intent Mapping / Knowledge Base
-      if (lowerText.match(/(precio|costo|cotiza|cuesta|planes|paquetes)/)) {
-        botResponse = "Nuestros planes empiezan desde $3,500 MXN mensuales para herramientas pyme (como bots de ventas 24/7), hasta soluciones corporativas tipo ERP a la medida. Si buscas algo avanzado, te sugiero una consultoría. ¿Te redirijo al formulario?";
+      // Intent Mapping / Knowledge Base (FAQs)
+      if (lowerText.match(/(tiempo|resultados|tardan|duracion)/)) {
+        botResponse = "Depende de la complejidad, pero la mayoría de nuestras implementaciones (como bots o automatizaciones de reportes) empiezan a dar resultados desde la primera semana.";
       } else if (lowerText.match(/(hola|buen dia|buenas tardes|que tal|saludos)/)) {
         botResponse = "¡Hola! Es un gusto. En XALY nos dedicamos a erradicar tareas manuales y crear sistemas inteligentes para empresas. ¿Qué problema operativo te gustaría resolver?";
-      } else if (lowerText.match(/(tipo de empresa|quienes son|que hacen|servicios|a que se dedican|como funciona)/)) {
-        botResponse = "Ayudamos a empresas (clínicas, fábricas, logística) a recuperar el control de su operación. Creamos chatbots de atención, integramos ERPs, y automatizamos finanzas y recursos humanos para que el dueño deje de ser un esclavo de su negocio.";
+      } else if (lowerText.match(/(sector|industria|tipo de empresa|quienes son|que hacen|servicios|a que se dedican|como funciona)/)) {
+        botResponse = "Nos adaptamos a cualquier industria (clínicas, fábricas, logística, B2B). Creamos chatbots de atención, integramos ERPs, y automatizamos finanzas para que el dueño recupere su tiempo.";
+      } else if (lowerText.match(/(procesos|automatizar|ejemplos)/)) {
+        botResponse = "Podemos automatizar atención al cliente 24/7, agendamiento de citas, facturación masiva, control de inventario y generación de reportes financieros automáticos.";
       } else if (lowerText.match(/(asesor|contacto|hablar con alguien|humano|agendar|cita|reunion|consultoria|contratar|comprar)/)) {
-        botResponse = "¡Excelente decisión! Te redirigiré ahora mismo a nuestro formulario de contacto para que un Arquitecto de Software se comunique contigo de inmediato.";
+        botResponse = "¡Excelente decisión! Usa el botón 'Ir a Contacto' debajo o te redirigiré en un momento.";
         shouldRedirect = true;
       } else if (lowerText.match(/(gracias|ok|perfecto|muy bien|excelente)/)) {
         botResponse = "¡De nada! Recuerda que la verdadera libertad empresarial se logra automatizando. Si necesitas algo más, aquí estoy.";
-      } else if (lowerText.match(/(si|claro|por favor|redirigeme|ok|va|simon)/) && messages.length > 2 && messages[messages.length - 1].text.includes("redirijo")) {
-        botResponse = "Entendido, te llevo al formulario de contacto en un momento...";
-        shouldRedirect = true;
       } else {
-        botResponse = "Interesante. Cada empresa es un mundo diferente. Para darte la mejor solución sobre Inteligencia Artificial o automatización para tu caso, lo ideal es que hablemos a detalle. ¿Te gustaría que te mande a nuestra sección de contacto?";
+        botResponse = "Te invitamos a agendar una llamada con nosotros utilizando el botón 'Ir a Contacto'.";
       }
 
       setMessages(prev => [...prev, { id: Date.now() + 1, type: 'bot', text: botResponse }]);
@@ -133,42 +131,42 @@ const Chatbot = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Suggested Questions */}
-          {messages.length === 1 && !isTyping && (
-             <div className="px-4 pb-2 bg-slate-900/80 flex flex-wrap gap-2">
-               {suggestedQuestions.map((q, idx) => (
-                 <button 
-                   key={idx}
-                   onClick={() => handleSend(q)}
-                   className="bg-slate-800 hover:bg-slate-700 text-cyber-cyan border border-cyber-cyan/20 rounded-full px-3 py-1.5 text-xs transition-colors text-left"
-                 >
-                   {q}
-                 </button>
-               ))}
-             </div>
-          )}
-          
-          {/* Input */}
-          <div className="p-4 bg-slate-800 border-t border-white/10">
-            <form 
-              onSubmit={(e) => { e.preventDefault(); handleSend(inputValue); }}
-              className="relative"
-            >
-              <input 
-                type="text" 
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                placeholder="Escribe tu mensaje..."
-                className="w-full bg-slate-900 border border-white/10 rounded-full py-2.5 pl-4 pr-10 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-cyber-cyan/50"
-              />
+          {/* Interaction Area (Buttons instead of input) */}
+          <div className="p-4 bg-slate-800 border-t border-white/10 flex flex-col gap-3">
+            
+            {!isTyping && showQuestions && (
+              <div className="flex flex-col gap-2 mb-2">
+                {suggestedQuestions.map((q, idx) => (
+                  <button 
+                    key={idx}
+                    onClick={() => handleSend(q)}
+                    className="w-full bg-slate-700 hover:bg-slate-600 text-gray-200 border border-slate-600 rounded-lg px-3 py-2 text-sm text-left transition-colors"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {!isTyping && !showQuestions && (
               <button 
-                type="submit"
-                disabled={!inputValue.trim() || isTyping}
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-cyber-cyan hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                onClick={() => setShowQuestions(true)}
+                className="w-full bg-slate-700 hover:bg-slate-600 text-gray-200 border border-slate-600 rounded-lg px-3 py-2 text-sm transition-colors mb-2 text-center"
               >
-                <Send className="w-4 h-4" />
+                Volver a la lista de preguntas
               </button>
-            </form>
+            )}
+
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                navigate('/contacto');
+                window.scrollTo(0,0);
+              }}
+              className="w-full bg-cyber-cyan/10 hover:bg-cyber-cyan/20 text-cyber-cyan border border-cyber-cyan/50 py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-center gap-2"
+            >
+              Ir a Contacto
+            </button>
           </div>
         </div>
       )}
